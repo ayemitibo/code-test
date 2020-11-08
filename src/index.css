@@ -11,25 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.pincode {
+.caret {
   position: relative;
 }
-.pincode::before {
+.caret.caret-up::before {
   right: 0.5rem;
-  content: "\21e7";
+  content: "\2191";
   font-family: "Material Design Icons";
   font-size: 1rem;
   top: 12px;
   position: absolute;
   bottom: 0.9em;
   display: block;
-  /* opacity: 0.3; */
+  opacity: 0.3;
+}
+.caret.caret-down::before {
+  right: 0.5rem;
+  content: "\2193";
+  font-family: "Material Design Icons";
+  font-size: 1rem;
+  top: 12px;
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3;
 }
 
-.pincode::after {
+/* .pincode::after {
   right: 0.5em;
   content: " \21e9";
   font-family: "Material Design Icons";
   top: 18px;
   font-size: 1rem;
-}
+} */

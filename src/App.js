@@ -5,6 +5,9 @@ const App = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [dateField, setDateField] = useState("");
+  const [sortBy, setSortBy] = useState("deliveryPincode");
+  const [sortOrder, setSortOrder] = useState("desc");
+
   useEffect(() => {
     var txtFile = new XMLHttpRequest();
     console.log("here");
@@ -34,6 +37,33 @@ const App = () => {
     };
     txtFile.send(null);
   }, []);
+
+  useEffect(() => {
+    filteredData.length > 0 &&
+      setFilteredData(
+        filteredData.sort((a, b) => {
+          const firstComparator =
+            sortBy === "orderDate"
+              ? new Date(a[sortBy]).getTime()
+              : Number(a[sortBy]);
+          const secondComparator =
+            sortBy === "orderDate"
+              ? new Date(b[sortBy]).getTime()
+              : Number(b[sortBy]);
+
+          return sortOrder === "asc"
+            ? firstComparator - secondComparator
+            : secondComparator - firstComparator;
+        })
+      );
+  }, [sortBy, sortOrder, filteredData]);
+  const sortByPinCode = () => {};
+
+  const sortDataBy = (columnName) => {
+    setSortBy(columnName);
+    setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+    console.log({ sortBy, sortOrder });
+  };
 
   const filterByPinCode = ({ target }) => {
     setSearchField(target.value.trim());
@@ -79,36 +109,52 @@ const App = () => {
               <tr>
                 <th>Order Id</th>
                 <th>Cust Id</th>
-                <th className="pincode">Pin Code</th>
-                <th>Order Date</th>
+                <th
+                  className={`caret ${
+                    sortOrder === "desc" && sortBy === "deliveryPincode"
+                      ? "caret-down"
+                      : "caret-up"
+                  }`}
+                  onClick={() => sortDataBy("deliveryPincode")}
+                >
+                  Pin Code
+                </th>
+                <th
+                  className={`caret ${
+                    sortOrder === "desc" && sortBy === "orderDate"
+                      ? "caret-down"
+                      : "caret-up"
+                  }`}
+                  onClick={() => sortDataBy("orderDate")}
+                >
+                  Order Date
+                </th>
                 <th>Item</th>
               </tr>
             </thead>
             <tbody>
-              {filteredData
-                ? filteredData.map((item, index) => {
-                    const pincodesMatch = item.deliveryPincode.includes(
-                      searchField
-                    );
-                    const isSameDate = item.orderDate.startsWith(dateField);
+              {filteredData.map((item, index) => {
+                const pincodesMatch = item.deliveryPincode.includes(
+                  searchField
+                );
+                const isSameDate = item.orderDate.startsWith(dateField);
 
-                    const canShowItem = pincodesMatch && isSameDate;
-                    return (
-                      <tr
-                        key={index}
-                        style={{
-                          display: canShowItem ? "" : "none",
-                        }}
-                      >
-                        <td>{item.orderId}</td>
-                        <td>{item.customerId}</td>
-                        <td>{item.deliveryPincode}</td>
-                        <td>{item.orderDate}</td>
-                        <td>{item.items}</td>
-                      </tr>
-                    );
-                  })
-                : null}
+                const canShowItem = pincodesMatch && isSameDate;
+                return (
+                  <tr
+                    key={index}
+                    style={{
+                      display: canShowItem ? "" : "none",
+                    }}
+                  >
+                    <td>{item.orderId}</td>
+                    <td>{item.customerId}</td>
+                    <td>{item.deliveryPincode}</td>
+                    <td>{item.orderDate}</td>
+                    <td>{item.items}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
