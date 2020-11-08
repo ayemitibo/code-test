@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/code-test/static/css/main.be6a321d.chunk.css",
+    "main.js": "/code-test/static/js/main.e3a58373.chunk.js",
+    "main.js.map": "/code-test/static/js/main.e3a58373.chunk.js.map",
+    "runtime-main.js": "/code-test/static/js/runtime-main.7ba0cd7e.js",
+    "runtime-main.js.map": "/code-test/static/js/runtime-main.7ba0cd7e.js.map",
+    "static/js/2.b7d6e305.chunk.js": "/code-test/static/js/2.b7d6e305.chunk.js",
+    "static/js/2.b7d6e305.chunk.js.map": "/code-test/static/js/2.b7d6e305.chunk.js.map",
+    "index.html": "/code-test/index.html",
+    "precache-manifest.36261e3917f60e0821b9623356d5b265.js": "/code-test/precache-manifest.36261e3917f60e0821b9623356d5b265.js",
+    "service-worker.js": "/code-test/service-worker.js",
+    "static/css/main.be6a321d.chunk.css.map": "/code-test/static/css/main.be6a321d.chunk.css.map",
+    "static/js/2.b7d6e305.chunk.js.LICENSE.txt": "/code-test/static/js/2.b7d6e305.chunk.js.LICENSE.txt",
+    "static/media/Seed_Data.csv": "/code-test/static/media/Seed_Data.6c263390.csv"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ba0cd7e.js",
+    "static/js/2.b7d6e305.chunk.js",
+    "static/css/main.be6a321d.chunk.css",
+    "static/js/main.e3a58373.chunk.js"
+  ]
+}
