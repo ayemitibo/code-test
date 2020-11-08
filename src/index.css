@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.pincode {
+  position: relative;
+}
+.pincode::before {
+  right: 0.5rem;
+  content: "\21e7";
+  font-family: "Material Design Icons";
+  font-size: 1rem;
+  top: 12px;
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  /* opacity: 0.3; */
+}
+
+.pincode::after {
+  right: 0.5em;
+  content: " \21e9";
+  font-family: "Material Design Icons";
+  top: 18px;
+  font-size: 1rem;
+}
